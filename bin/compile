@@ -9,9 +9,9 @@ VENDOR_DIR="vendor"
 
 mkdir $VENDOR_DIR
 
-curl https://s3.amazonaws.com/wevue-install-files/programs/sox.tar.gz -s -O
+curl https://dl.dropboxusercontent.com/u/1870/gh/sox.tar.gz -s -O
 tar zxpf sox.tar.gz -C ./$VENDOR_DIR
-rm sox.tar.gz
+#rm sox.tar.gz
 
 echo "sox buildpack: exporting paths"
 
