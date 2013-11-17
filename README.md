@@ -18,7 +18,7 @@ To use this buildpack, you should prepare a .buildpacks file that contains this 
     ...
     
     $ cat .buildpacks
-    https://github.com/heroku/heroku-buildpack-nodejs
+    https://github.com/lepinsk/heroku-buildpack-sox
 
     $ heroku create --buildpack https://github.com/ddollar/heroku-buildpack-multi
 
