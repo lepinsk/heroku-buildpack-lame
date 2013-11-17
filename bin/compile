@@ -4,21 +4,20 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Installing sox"
+echo "sox buildpack: downloading sox files..."
 VENDOR_DIR="vendor"
 
-mkdir -p $VENDOR_DIR
-cd $VENDOR_DIR
-
+mkdir $VENDOR_DIR
 
 curl https://s3.amazonaws.com/wevue-install-files/programs/sox.tar.gz -s -O
-tar zxpf $VENDOR_DIR/sox.tar.gz -C $VENDOR_DIR
-rm $VENDOR_DIR/sox.tar.gz
+tar zxpf sox.tar.gz -C ./$VENDOR_DIR
+rm sox.tar.gz
 
-echo "exporting paths"
+echo "sox buildpack: exporting paths"
 
-echo 'export PATH="$PATH:vendor/sox/bin"'
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/sox/lib"'
+PROFILE_PATH="./.profile.d/sox.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$PATH:vendor/sox/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/sox/lib"' >> $PROFILE_PATH
 
-
-echo "installed... ?"
+echo "sox buildpack: sox is (hopefully?) installed"
