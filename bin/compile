@@ -15,4 +15,10 @@ curl https://s3.amazonaws.com/wevue-install-files/programs/sox.tar.gz -s -O
 tar zxpf $VENDOR_DIR/sox.tar.gz -C $VENDOR_DIR
 rm $VENDOR_DIR/sox.tar.gz
 
+echo "exporting paths"
+
+echo 'export PATH="$PATH:vendor/sox/bin"'
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/sox/lib"'
+
+
 echo "installed... ?"
