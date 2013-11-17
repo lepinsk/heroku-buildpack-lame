@@ -4,20 +4,15 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Install ffmpeg"
-BUILD_DIR=$1
+echo "-----> Installing sox"
 VENDOR_DIR="vendor"
-DOWNLOAD_URL="http://flect.github.io/heroku-binaries/libs/ffmpeg.tar.gz"
 
-echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
-
-cd $BUILD_DIR
 mkdir -p $VENDOR_DIR
 cd $VENDOR_DIR
-curl -L --silent $DOWNLOAD_URL | tar xz
 
-echo "exporting PATH and LIBRARY_PATH" | indent
-PROFILE_PATH="$BUILD_DIR/.profile.d/ffmpeg.sh"
-mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$PATH:vendor/ffmpeg/bin"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/ffmpeg/lib"' >> $PROFILE_PATH
+
+curl https://s3.amazonaws.com/wevue-install-files/programs/sox.tar.gz -s -O
+tar zxpf $VENDOR_DIR/sox.tar.gz -C $VENDOR_DIR
+rm $VENDOR_DIR/sox.tar.gz
+
+echo "installed... ?"
