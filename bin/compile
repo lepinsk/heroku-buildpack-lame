@@ -4,28 +4,20 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "sox buildpack: downloading sox files..."
-
+echo "-----> Install sox"
 BUILD_DIR=$1
 VENDOR_DIR="vendor"
+DOWNLOAD_URL="https://dl.dropboxusercontent.com/u/1870/gh/sox.tar.gz"
+
+echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
 
 cd $BUILD_DIR
 mkdir -p $VENDOR_DIR
 cd $VENDOR_DIR
+curl -L --silent $DOWNLOAD_URL | tar xz
 
-curl https://dl.dropboxusercontent.com/u/1870/gh/sox.tar.gz -s -O
-tar zxpf sox.tar.gz
-rm sox.tar.gz
-
-echo "sox buildpack: exporting paths"
-
+echo "exporting PATH and LIBRARY_PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/sox.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:vendor/sox/bin"' >> $PROFILE_PATH
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/sox/lib"' >> $PROFILE_PATH
-
-echo "sox buildpack: testing sox with no relative path..."
-
-sox
-
-echo "sox buildpack: sox is (hopefully?) installed"
