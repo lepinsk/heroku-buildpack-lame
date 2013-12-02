@@ -4,20 +4,20 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Install sox"
+echo "-----> Installing ffmpeg and lame"
 BUILD_DIR=$1
 VENDOR_DIR="vendor"
-DOWNLOAD_URL="https://dl.dropboxusercontent.com/u/1870/gh/sox.tar.gz"
+DOWNLOAD_URL="https://dl.dropboxusercontent.com/u/1870/gh/ffmpeg-lame.tar"
 
 echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
 
 cd $BUILD_DIR
 mkdir -p $VENDOR_DIR
 cd $VENDOR_DIR
-curl -L --silent $DOWNLOAD_URL | tar xz
+curl -L --silent $DOWNLOAD_URL | tar -xf
 
 echo "exporting PATH and LIBRARY_PATH" | indent
-PROFILE_PATH="$BUILD_DIR/.profile.d/sox.sh"
+PROFILE_PATH="$BUILD_DIR/.profile.d/ffmpeglame.sh"
 mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$PATH:vendor/sox/bin"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/sox/lib"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:vendor/ffmpeg/bin:vendor/lame/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/ffmpeg/lib:vendor/lame/lib"' >> $PROFILE_PATH
