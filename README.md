@@ -1,7 +1,7 @@
-Heroku buildpack: ffmpeg and lame
+Heroku buildpack: lame
 =======================
 
-This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for using ffmpeg and lame in your project.  
+This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for using lame in your project.  
 It doesn't do anything else, so to actually compile your app you should use [heroku-buildpack-multi](https://github.com/ddollar/heroku-buildpack-multi) to combine it with a real buildpack.
 
 Lineage
@@ -18,7 +18,7 @@ To use this buildpack, you should prepare a .buildpacks file that contains this 
     ...
     
     $ cat .buildpacks
-    https://github.com/lepinsk/heroku-buildpack-ffmpeg-lame
+    https://github.com/lepinsk/heroku-buildpack-lame
 
     $ heroku create --buildpack https://github.com/ddollar/heroku-buildpack-multi
 
@@ -27,5 +27,5 @@ To use this buildpack, you should prepare a .buildpacks file that contains this 
 
 You can verify that sox is installed by calling:
 
-    $ heroku run "ffmpeg"
+    $ heroku run "lame"
 
