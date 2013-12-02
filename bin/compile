@@ -7,7 +7,7 @@ indent() {
 echo "-----> Installing ffmpeg and lame"
 BUILD_DIR=$1
 VENDOR_DIR="vendor"
-DOWNLOAD_URL="https://dl.dropboxusercontent.com/u/1870/gh/ffmpeg-lame.tar"
+DOWNLOAD_URL="https://dl.dropboxusercontent.com/u/1870/gh/ffmpeg-lame.tar.gz"
 
 echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
 
