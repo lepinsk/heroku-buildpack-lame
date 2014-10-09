@@ -25,7 +25,7 @@ To use this buildpack, you should prepare a .buildpacks file that contains this 
     $ git push heroku master
     ...
 
-You can verify that sox is installed by calling:
+You can verify that lame is installed by calling:
 
     $ heroku run "lame"
 
