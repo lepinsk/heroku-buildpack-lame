@@ -7,7 +7,7 @@ indent() {
 echo "-----> Installing lame"
 BUILD_DIR=$1
 VENDOR_DIR="vendor"
-DOWNLOAD_URL="https://dl.dropboxusercontent.com/u/1870/gh/lame.tar.gz"
+DOWNLOAD_URL="https://github.com/lepinsk/heroku-buildpack-lame/raw/master/lame.tar.gz"
 
 echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
 
